@@ -4,6 +4,7 @@ plugins {
 	kotlin("jvm") version "1.9.25"
 	kotlin("plugin.spring") version "1.9.25"
 	kotlin("plugin.jpa") version "1.9.25"
+	id("com.github.johnrengelman.processes") version "0.5.0"
 }
 
 group = "com.programacionMovil"
