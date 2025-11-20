@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import jakarta.persistence.*
 import java.time.OffsetTime
+import java.time.LocalTime
 
 @Entity
 @Table(name = "horario")
@@ -13,10 +14,10 @@ data class Horario(
         val idHorario: Int = 0,
 
         @Column(name = "hora_inicio")
-        val horaInicio: OffsetTime? = null,
+        val horaInicio: LocalTime? = null,
 
         @Column(name = "hora_fin")
-        val horaFin: OffsetTime? = null,
+        val horaFin: LocalTime? = null,
 
         @Column(name = "dia")
         val dia: String? = null,
