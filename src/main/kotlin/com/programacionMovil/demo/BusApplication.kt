@@ -7,6 +7,5 @@ import org.springframework.boot.runApplication
 class BusApplication
 
 fun main(args: Array<String>) {
-	println("hola")
 	runApplication<BusApplication>(*args)
 }
