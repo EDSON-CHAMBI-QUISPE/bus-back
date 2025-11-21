@@ -25,7 +25,7 @@ class LineaController(private val lineaGeoService: LineaGeoService) {
         val parts = latlon.split("$")
         val lat = parts[0].toDouble()
         val lon = parts[1].toDouble()
-        val docs = lineaGeoService.findLineasNearPoint(lat, lon, maxMeters?.toDouble() ?: 200.0)
+        val docs = lineaGeoService.findLineasNearPoint(lat, lon,  1000.0)
         return ResponseEntity.ok(docs.map { LineaMapper.toApi(it) })
     }
 
@@ -34,7 +34,7 @@ class LineaController(private val lineaGeoService: LineaGeoService) {
         val pa = p1.split("$"); val pb = p2.split("$")
         val lat1 = pa[0].toDouble(); val lon1 = pa[1].toDouble()
         val lat2 = pb[0].toDouble(); val lon2 = pb[1].toDouble()
-        val docs = lineaGeoService.findLineasNearBoth(lat1, lon1, lat2, lon2, maxMeters?.toDouble() ?: 200.0)
+        val docs = lineaGeoService.findLineasNearBoth(lat1, lon1, lat2, lon2, 1000.0)
         return ResponseEntity.ok(docs.map { LineaMapper.toApi(it) })
     }
     @GetMapping("/{idLinea}")
