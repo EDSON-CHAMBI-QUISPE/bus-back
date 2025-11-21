@@ -1,4 +1,4 @@
-package com.programacionMovil.demo
+package com.programacionMovil
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class BusApplication
 
 fun main(args: Array<String>) {
-	runApplication<BusApplication>(*args)
+    runApplication<BusApplication>(*args)
 }

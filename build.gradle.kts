@@ -1,10 +1,9 @@
 plugins {
-	id("org.springframework.boot") version "3.3.4"
-	id("io.spring.dependency-management") version "1.1.6"
-	kotlin("jvm") version "1.9.25"
-	kotlin("plugin.spring") version "1.9.25"
-	kotlin("plugin.jpa") version "1.9.25"
-	//id("com.github.johnrengelman.processes") version "0.5.0"
+    id("org.springframework.boot") version "3.3.4"
+    id("io.spring.dependency-management") version "1.1.6"
+    kotlin("jvm") version "1.9.25"
+    kotlin("plugin.spring") version "1.9.25"
+    // kotlin("plugin.jpa") removed because we move to MongoDB
 }
 
 group = "com.programacionMovil"
@@ -13,39 +12,34 @@ description = "Backend Bus API"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	// Spring Boot
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-web")
+    // Spring Boot web
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
-	// Kotlin + JSON
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
+    // Spring Data MongoDB (replace JPA + Postgres)
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 
-	// PostgreSQL
-	runtimeOnly("org.postgresql:postgresql")
+    // Kotlin + JSON
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-	// Hot reload (opcional)
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
+    // Hot reload (opcional)
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 
-	// Tests
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.jetbrains.kotlin:kotlin-test")
+    // Tests
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
 tasks.withType<Test> {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 kotlin {
-	jvmToolchain(17)
+    jvmToolchain(17)
 }
 
-allOpen {
-	annotation("jakarta.persistence.Entity")
-	annotation("jakarta.persistence.MappedSuperclass")
-	annotation("jakarta.persistence.Embeddable")
-}
+// removed allOpen block because JPA annotations are not used with MongoDB
